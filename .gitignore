@@ -1,0 +1,36 @@
+# .gitignore
+
+# Virtual environment
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Data files — tracked by DVC instead
+data/raw/
+data/interim/
+data/processed/
+
+# MLflow runs (large)
+mlruns/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# API keys — NEVER commit these
+.env
+*.env
+secrets.yaml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Models (tracked by DVC)
+*.pkl
+*.pt
+*.pth
+*.joblib
