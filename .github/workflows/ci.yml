@@ -1,0 +1,40 @@
+# .github/workflows/ci.yml
+# This file tells GitHub: "whenever code is pushed, run these checks"
+
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest          # GitHub spins up a fresh Linux computer
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4   # Download your code onto that computer
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"              # Cache installed packages for speed
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check code style with black
+        run: black --check src/ tests/
+
+      - name: Lint with flake8
+        run: flake8 src/ tests/ --max-line-length=100
+
+      - name: Run tests with coverage
+        run: pytest tests/ --cov=src --cov-report=xml --cov-fail-under=60
+        # Fails the build if coverage drops below 60%
+
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v4
