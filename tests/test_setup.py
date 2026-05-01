@@ -9,11 +9,10 @@ def test_python_version():
 
 def test_core_imports():
     """If these imports fail, something is wrong with the installation."""
-    import numpy
-    import pandas
-    import torch
-    import pymatgen
-
+    import numpy  # noqa: F401
+    import pandas  # noqa: F401
+    import torch  # noqa: F401
+    import pymatgen  # noqa: F401
     assert True
 
 
