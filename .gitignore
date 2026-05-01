@@ -10,7 +10,6 @@ __pycache__/
 *.egg-info/
 
 # Data files — tracked by DVC instead
-data/raw/
 data/interim/
 data/processed/
 
