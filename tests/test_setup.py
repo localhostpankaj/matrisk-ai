@@ -13,6 +13,7 @@ def test_core_imports():
     import pandas  # noqa: F401
     import torch  # noqa: F401
     import pymatgen  # noqa: F401
+
     assert True
 
 
